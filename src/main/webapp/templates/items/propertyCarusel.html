@@ -35,7 +35,7 @@
                                 <div class="card-body-a">
                                     <div class="price-box d-flex">
                                         <!--                                        vezi daca e bine-->
-                                        <span class="price-a" th:text=`property.getRent()`>rent | $ 12.000</span>
+                                        <span class="price-a" th:text=`${property.getRent()}`>rent | $ 12.000</span>
                                     </div>
                                     <a href="#" class="link-a">Click here to view
                                         <span class="bi bi-chevron-right"></span>
@@ -45,19 +45,19 @@
                                     <ul class="card-info d-flex justify-content-around">
                                         <li>
                                             <h4 class="card-info-title">Area</h4>
-                                            <span th:text=`property.area`>340m<sup>2</sup></span>
+                                            <span th:text=`${property.getArea()}`>340m<sup>2</sup></span>
                                         </li>
                                         <li>
                                             <h4 class="card-info-title">Beds</h4>
-                                            <span th:text="property.getNumberOfBeds()">2</span>
+                                            <span th:text="${property.getNumberOfBeds()}">2</span>
                                         </li>
                                         <li>
                                             <h4 class="card-info-title">Baths</h4>
-                                            <span th:text="property.getNumberOfBaths()">4</span>
+                                            <span th:text="${property.getNumberOfBaths()}">4</span>
                                         </li>
                                         <li>
                                             <h4 class="card-info-title">Garages</h4>
-                                            <span th:text="property.getNumberOfGarages()">1</span>
+                                            <span th:text="${property.getNumberOfGarages()}">1</span>
                                         </li>
                                     </ul>
                                 </div>

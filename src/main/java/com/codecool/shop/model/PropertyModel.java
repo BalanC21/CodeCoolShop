@@ -1,11 +1,11 @@
 package com.codecool.shop.model;
 
-import java.util.PrimitiveIterator;
+
+import com.codecool.shop.dao.implementation.PropertyDaoMem;
 
 public class PropertyModel extends BaseModel {
     private AgentModel agentModel;
-    private String name;
-    private String description;
+    private ProductCategory productCategory;
     private String numberOfBeds;
     private String numberOfBaths;
     private String numberOfGarages;
@@ -52,5 +52,9 @@ public class PropertyModel extends BaseModel {
 
     public String getArea() {
         return String.valueOf(area);
+    }
+
+    public ProductCategory getProductCategory() {
+        return productCategory;
     }
 }
