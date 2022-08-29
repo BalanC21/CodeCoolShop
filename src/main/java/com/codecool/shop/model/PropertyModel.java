@@ -1,16 +1,14 @@
 package com.codecool.shop.model;
 
 
-import com.codecool.shop.dao.implementation.PropertyDaoMem;
-
 public class PropertyModel extends BaseModel {
-    private AgentModel agentModel;
+    private final AgentModel agentModel;
     private ProductCategory productCategory;
-    private String numberOfBeds;
-    private String numberOfBaths;
-    private String numberOfGarages;
-    private int rent;
-    private int area;
+    private final String numberOfBeds;
+    private final String numberOfBaths;
+    private final String numberOfGarages;
+    private final int rent;
+    private final int area;
 
     public PropertyModel(AgentModel agentModel, String name, String description, String numberOfBeds, String numberOfBaths, String numberOfGarages, int rent, int area)  {
         super(name, description);

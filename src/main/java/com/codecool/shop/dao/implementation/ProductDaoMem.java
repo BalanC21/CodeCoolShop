@@ -4,7 +4,7 @@ package com.codecool.shop.dao.implementation;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.model.Product;
 import com.codecool.shop.model.ProductCategory;
-import com.codecool.shop.model.Supplier;
+import com.codecool.shop.model.AgentModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +49,8 @@ public class ProductDaoMem implements ProductDao {
     }
 
     @Override
-    public List<Product> getBy(Supplier supplier) {
-        return data.stream().filter(t -> t.getSupplier().equals(supplier)).collect(Collectors.toList());
+    public List<Product> getBy(AgentModel agentModel) {
+        return data.stream().filter(t -> t.getSupplier().equals(agentModel)).collect(Collectors.toList());
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.codecool.shop.dao;
 import com.codecool.shop.model.AgentModel;
 import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.PropertyModel;
-import com.codecool.shop.model.Supplier;
 
 import java.util.List;
 

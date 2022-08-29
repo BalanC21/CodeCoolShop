@@ -16,26 +16,26 @@
             </div>
         </div>
 
-        <div id="property-carousel" class="swiper" th:each="property, iterStat : ${properties}">
+        <div id="property-carousel" class="swiper">
             <div class="swiper-wrapper">
-
-                <div class="carousel-item-b swiper-slide">
+                <div class="carousel-item-b swiper-slide" th:each="property, iterStat : ${properties}">
                     <div class="card-box-a card-shadow">
                         <div class="img-box-a">
-                            <img src="/templates/assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+<!--                            <img src="/templates/assets/img/property-6.jpg" alt="" class="img-a img-fluid">-->
+                            <img class="" th:attr="src='/templates/assets/img/property-' + ${property.id} + '.jpg'" alt="" src="https://placehold.it/400x250/000/fff"/>
                         </div>
                         <div class="card-overlay">
                             <div class="card-overlay-a-content">
                                 <div class="card-header-a">
                                     <h2 class="card-title-a">
-                                        <a href="property-single.html" th:text="property.getName()">206 Mount
+                                        <a href="#" th:text="${property.getName()}">206 Mount
                                             <br/> Olive Road Two</a>
                                     </h2>
                                 </div>
                                 <div class="card-body-a">
                                     <div class="price-box d-flex">
-                                        <!--                                        vezi daca e bine-->
-                                        <span class="price-a" th:text=`${property.getRent()}`>rent | $ 12.000</span>
+                                        <!--vezi daca e bine-->
+                                        <span class="price-a" th:text="${property.getRent()}">rent | $ 12.000</span>
                                     </div>
                                     <a href="#" class="link-a">Click here to view
                                         <span class="bi bi-chevron-right"></span>
@@ -45,7 +45,7 @@
                                     <ul class="card-info d-flex justify-content-around">
                                         <li>
                                             <h4 class="card-info-title">Area</h4>
-                                            <span th:text=`${property.getArea()}`>340m<sup>2</sup></span>
+                                            <span th:text="${property.getArea()}">340m<sup>2</sup></span>
                                         </li>
                                         <li>
                                             <h4 class="card-info-title">Beds</h4>
