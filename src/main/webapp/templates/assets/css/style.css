@@ -1408,7 +1408,7 @@ a:hover {
   }
 }
 
-/*------/ Property Grid /-----*/
+/*------/ PropertyModel Grid /-----*/
 .property-grid .grid-option {
   text-align: right;
   margin-bottom: 2rem;
@@ -1430,7 +1430,7 @@ a:hover {
   border-color: #313131;
 }
 
-/*------/ Property Single /-----*/
+/*------/ PropertyModel Single /-----*/
 .gallery-property {
   margin-bottom: 3rem;
 }
