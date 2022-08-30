@@ -1,6 +1,6 @@
 <div th:fragment="carousel" class="intro intro-carousel swiper position-relative">
     <div class="swiper-wrapper">
-        <div class="swiper-slide carousel-item-a intro-item bg-image" th:each="prod,iterStat : ${products}"
+        <div class="swiper-slide carousel-item-a intro-item bg-image" th:each="prod,iterStat : ${properties}"
              th:style="'background-image: url(/templates/assets/img/slide-' + ${prod.getId()} +'.jpg)'">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
@@ -16,7 +16,7 @@
                                     </h1>
                                     <p class="intro-subtitle intro-price">
                                         <a href="#"><span class="price-a"
-                                                          th:text="${prod.getPrice()}">100 USD</span></a>
+                                                          th:text="${prod.getProductCategory().getName()} + ' | ' + ${prod.getPrice()}">100 USD</span></a>
                                     </p>
                                 </div>
                             </div>
