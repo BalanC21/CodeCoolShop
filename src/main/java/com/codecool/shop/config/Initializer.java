@@ -17,14 +17,20 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.math.BigDecimal;
+import java.util.function.ToDoubleBiFunction;
 
 @WebListener
 public class Initializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
+        // TODO: 30.08.2022 Delete all ProductRelated Clas;
         ProductDao productDataStore = ProductDaoMem.getInstance();
+        // TODO: 30.08.2022 Delete all ProductRelated Clas;
+
         PropertyDao propertyDataStore = PropertyDaoMem.getInstance();
+
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
         SupplierDao supplierDataStore = SupplierDaoMem.getInstance();
 
@@ -40,13 +46,9 @@ public class Initializer implements ServletContextListener {
         productCategoryDataStore.add(sale);
 
         //setting up products and printing it
-        productDataStore.add(new Product("Best PentHouse", new BigDecimal("1200.000"), "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", rent, moni));
-        productDataStore.add(new Product("Second Best PentHouse", new BigDecimal("2200.000"), "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", rent, cristi));
-        productDataStore.add(new Product("Third Best PentHouse", new BigDecimal("1470.000"), "USD", "Amazon's latest Fire HD 8 house is a great value for media consumption.", sale, moni));
-
-        propertyDataStore.add(new PropertyModel(moni, "Mount Oliver RoadTwo", "Very Good Lighting", "6", "3", "2", 20_000, 110));
-        propertyDataStore.add(new PropertyModel(moni, "Ana RoadTwo", "Very Good Area", "10", "4", "6", 35_000, 210));
-        propertyDataStore.add(new PropertyModel(moni, "Banana RoadTwo", "Very Good Road", "2", "5", "1", 15_000, 310));
-        propertyDataStore.add(new PropertyModel(moni, "Oliver Car", "Very Good Car", "7", "2", "0", 24_000, 40));
+        propertyDataStore.add(new PropertyModel(moni, "Mount Oliver RoadTwo", "Very Good Lighting", "6", "3", "2", new BigDecimal(20_000), new BigDecimal(110), rent, "USD"));
+        propertyDataStore.add(new PropertyModel(moni, "Ana RoadTwo", "Very Good Area", "10", "4", "6", new BigDecimal(35_000), new BigDecimal(210), sale, "USD"));
+        propertyDataStore.add(new PropertyModel(moni, "Banana RoadTwo", "Very Good Road", "2", "5", "1", new BigDecimal(15_000), new BigDecimal(310), rent, "USD"));
+        propertyDataStore.add(new PropertyModel(moni, "Oliver Car", "Very Good Car", "7", "2", "0", new BigDecimal(24_000), new BigDecimal(40), sale, "USD"));
     }
 }

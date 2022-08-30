@@ -1,23 +1,29 @@
 package com.codecool.shop.model;
 
 
+import java.math.BigDecimal;
+import java.util.Currency;
+
 public class PropertyModel extends BaseModel {
     private final AgentModel agentModel;
+    private String numberOfBeds;
+    private String numberOfBaths;
+    private String numberOfGarages;
+    private final BigDecimal price;
+    private BigDecimal area;
     private ProductCategory productCategory;
-    private final String numberOfBeds;
-    private final String numberOfBaths;
-    private final String numberOfGarages;
-    private final int rent;
-    private final int area;
+    private Currency defaultCurrency;
 
-    public PropertyModel(AgentModel agentModel, String name, String description, String numberOfBeds, String numberOfBaths, String numberOfGarages, int rent, int area)  {
+    public PropertyModel(AgentModel agentModel, String name, String description, String numberOfBeds, String numberOfBaths, String numberOfGarages, BigDecimal price, BigDecimal area, ProductCategory category, String currency) {
         super(name, description);
         this.agentModel = agentModel;
         this.numberOfBeds = numberOfBeds;
         this.numberOfBaths = numberOfBaths;
         this.numberOfGarages = numberOfGarages;
-        this.rent = rent;
+        this.price = price;
         this.area = area;
+        this.productCategory = category;
+        this.defaultCurrency = Currency.getInstance(currency);
     }
 
     public AgentModel getAgentModel() {
@@ -44,8 +50,8 @@ public class PropertyModel extends BaseModel {
         return numberOfGarages;
     }
 
-    public String getRent() {
-        return "RENT | $ " + rent;
+    public String getPrice() {
+        return String.valueOf(price);
     }
 
     public String getArea() {
@@ -54,5 +60,9 @@ public class PropertyModel extends BaseModel {
 
     public ProductCategory getProductCategory() {
         return productCategory;
+    }
+
+    public Currency getDefaultCurrency() {
+        return defaultCurrency;
     }
 }

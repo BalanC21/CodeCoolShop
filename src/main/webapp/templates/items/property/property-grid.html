@@ -1,0 +1,68 @@
+<main id="main" th:fragment="property-grid">
+    <section class="property-grid grid" th:fragment="property-grid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="grid-option">
+                        <form>
+                            <select class="custom-select">
+                                <option selected>All</option>
+                                <option value="1">New to Old</option>
+                                <option value="2">For Rent</option>
+                                <option value="3">For Sale</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4" th:each="property, iterStat : ${properties}">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img src="/templates/assets/img/property-1.jpg" alt="" class="img-a img-fluid">
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a href="#" th:text="${property.getName()}">204 Mount
+                                            <br/> Olive Road Two</a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a"
+                                              th:text="${property.getProductCategory().getName()} + ' | ' +${property.getPrice()}">rent | $ 12.000</span>
+                                    </div>
+                                    <a href="property-single.html" class="link-a">Click here to view
+                                        <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title" th:text="${property.getArea()}">Area</h4>
+                                            <span>340m
+                          <sup>2</sup>
+                        </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Beds</h4>
+                                            <span th:text="${property.getNumberOfBeds()}">2</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Baths</h4>
+                                            <span th:text="${property.getNumberOfBaths()}">4</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Garages</h4>
+                                            <span th:text="${property.getNumberOfGarages()}">1</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Property Grid Single-->
+</main>

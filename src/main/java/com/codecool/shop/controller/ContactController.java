@@ -21,12 +21,13 @@ public class ContactController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductDao productDataStore = ProductDaoMem.getInstance();
         ProductCategoryDao productCategoryDataStore = ProductCategoryDaoMem.getInstance();
-        ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
+
+//        ProductService productService = new ProductService(productDataStore,productCategoryDataStore);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("category", productService.getProductCategory(1));
-        context.setVariable("products", productService.getProductsForCategory(1));
+//        context.setVariable("category", productService.getProductCategory(1));
+//        context.setVariable("products", productService.getProductsForCategory(1));
         // // Alternative setting of the template context
         // Map<String, Object> params = new HashMap<>();
         // params.put("category", productCategoryDataStore.find(1));

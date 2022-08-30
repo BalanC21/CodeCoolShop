@@ -1,7 +1,7 @@
 <div th:fragment="carousel" class="intro intro-carousel swiper position-relative">
     <div class="swiper-wrapper">
-        <div class="swiper-slide carousel-item-a intro-item bg-image"
-             style="background-image: url(/templates/assets/img/slide-1.jpg)" th:each="prod,iterStat : ${products}">
+        <div class="swiper-slide carousel-item-a intro-item bg-image" th:each="prod,iterStat : ${products}"
+             style="background-image: url(/templates/assets/img/slide-1.jpg)">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -15,7 +15,8 @@
                                         <br> Olive Road Two
                                     </h1>
                                     <p class="intro-subtitle intro-price">
-                                        <a href="#"><span class="price-a" th:text="${prod.getPrice()}">100 USD</span></a>
+                                        <a href="#"><span class="price-a"
+                                                          th:text="${prod.getPrice()}">100 USD</span></a>
                                     </p>
                                 </div>
                             </div>
