@@ -21,8 +21,9 @@
                 <div class="carousel-item-b swiper-slide" th:each="property, iterStat : ${properties}">
                     <div class="card-box-a card-shadow">
                         <div class="img-box-a">
-<!--                            <img src="/templates/assets/img/property-6.jpg" alt="" class="img-a img-fluid">-->
-                            <img class="" th:attr="src='/templates/assets/img/property-' + ${property.id} + '.jpg'" alt="" src="https://placehold.it/400x250/000/fff"/>
+                            <!--<img src="/templates/assets/img/property-6.jpg" alt="" class="img-a img-fluid">-->
+                            <img class="" th:attr="src='/templates/assets/img/property-' + ${property.getId()} + '.jpg'"
+                                 alt="" src="https://placehold.it/400x250/000/fff"/>
                         </div>
                         <div class="card-overlay">
                             <div class="card-overlay-a-content">
@@ -35,7 +36,8 @@
                                 <div class="card-body-a">
                                     <div class="price-box d-flex">
                                         <!--vezi daca e bine-->
-                                        <span class="price-a" th:text="${property.getProductCategory().getName()} + ' | ' +${property.getPrice()}">$ 12.000</span>
+                                        <span class="price-a"
+                                              th:text="${property.getProductCategory().getName()} + ' | ' + ${property.getPrice()}">$ 12.000</span>
                                     </div>
                                     <a href="#" class="link-a">Click here to view
                                         <span class="bi bi-chevron-right"></span>
@@ -64,10 +66,9 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- End carousel item -->
+                </div>
             </div>
         </div>
         <div class="propery-carousel-pagination carousel-pagination"></div>
-
     </div>
-</section><!-- End Latest Properties Section -->
+</section>

@@ -37,6 +37,7 @@ public class ProductController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("category", productService.getProductCategory(1));
         context.setVariable("products", productService.getProductsForCategory(1));
+        System.out.println(propertyDao.getAll().toString());
 
         context.setVariable("properties", propertyDao.getAll());
 
