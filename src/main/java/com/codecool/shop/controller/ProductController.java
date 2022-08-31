@@ -23,9 +23,9 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO: 30.08.2022 Delete all ProductRelated Clas;
+        // TODO: 30.08.2022 Delete all ProductRelated Classes;
         ProductDao productDataStore = ProductDaoMem.getInstance();
-        // TODO: 30.08.2022 Delete all ProductRelated Clas;
+        // TODO: 30.08.2022 Delete all ProductRelated Classes;
 
         PropertyDao propertyDao = PropertyDaoMem.getInstance();
 
@@ -37,7 +37,6 @@ public class ProductController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("category", productService.getProductCategory(1));
         context.setVariable("products", productService.getProductsForCategory(1));
-        System.out.println(propertyDao.getAll().toString());
 
         context.setVariable("properties", propertyDao.getAll());
 
