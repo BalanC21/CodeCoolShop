@@ -1,5 +1,6 @@
 <!-- ======= Header/Navbar ======= -->
 <nav th:fragment="navBar" class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div th:replace="/items/index/serach.html :: search"></div>
     <div class="container">
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault"
                 aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,10 +49,6 @@
                 data-bs-target="#navbarTogglerDemo01">
             <i class="bi bi-search"></i>
         </button>
-
-        <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse"
-                data-bs-target="#navbarTogglerDemo01">
-            <a class="bi bi bi-cart-fill"></a>
-        </button>
+        <a href="/cart" class="bi bi bi-cart-fill" aria-label="Toggle navigation">Cart</a>
     </div>
 </nav>
