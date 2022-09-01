@@ -27,7 +27,7 @@
                                     <span class="bi bi-cash">$</span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h5 class="title-c" th:text="${property.getPrice()}">15000</h5>
+                                    <h5 class="title-c" th:text="${singleProperty.getPrice()}">15000</h5>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="title-box-d section-t4">
-                                        <h3 class="title-d" th:text="${property.getName()}">Quick Summary</h3>
+                                        <h3 class="title-d" th:text="${singleProperty.getName()}">Quick Summary</h3>
                                     </div>
                                 </div>
                             </div>
@@ -59,21 +59,21 @@
                                     </li>
                                     <li class="d-flex justify-content-between">
                                         <strong>Area:</strong>
-                                        <span th:text="${property.getArea()}">340m
+                                        <span th:text="${singleProperty.getArea()}">340m
                           <sup>2</sup>
                         </span>
                                     </li>
                                     <li class="d-flex justify-content-between">
                                         <strong>Beds:</strong>
-                                        <span th:text="${property.getNumberOfBeds()}">4</span>
+                                        <span th:text="${singleProperty.getNumberOfBeds()}">4</span>
                                     </li>
                                     <li class="d-flex justify-content-between">
                                         <strong>Baths:</strong>
-                                        <span th:text="${property.getNumberOfBaths()}">2</span>
+                                        <span th:text="${singleProperty.getNumberOfBaths()}">2</span>
                                     </li>
                                     <li class="d-flex justify-content-between">
                                         <strong>Garage:</strong>
-                                        <span th:text="${property.getNumberOfGarages()}">1</span>
+                                        <span th:text="${singleProperty.getNumberOfGarages()}">1</span>
                                     </li>
                                 </ul>
                             </div>

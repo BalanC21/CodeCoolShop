@@ -24,7 +24,7 @@
                             <div class="card-overlay-a-content">
                                 <div class="card-header-a">
                                     <h2 class="card-title-a">
-                                        <a href="#" th:text="${property.getName()}">204 Mount
+                                        <a th:href="@{/productDetail(article=${property.getId()})}" th:text="${property.getName()}">204 Mount
                                             <br/> Olive Road Two</a>
                                     </h2>
                                 </div>
@@ -33,7 +33,7 @@
                                         <span class="price-a"
                                               th:text="${property.getProductCategory().getName()} + ' | ' +${property.getPrice()}">rent | $ 12.000</span>
                                     </div>
-                                    <a href="property-single.html" class="link-a">Click here to view
+                                    <a th:href="@{/productDetail(article=${property.getId()})}" class="link-a">Click here to view
                                         <span class="bi bi-chevron-right"></span>
                                     </a>
                                 </div>

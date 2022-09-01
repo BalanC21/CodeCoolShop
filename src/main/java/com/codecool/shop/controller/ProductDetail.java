@@ -25,7 +25,11 @@ public class ProductDetail extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
 
         WebContext context = new WebContext(request, response, request.getServletContext());
-        context.setVariable("property", propertyDao.find(1));
+
+        context.setVariable("singleProperty", propertyDao.find(Integer.parseInt(productId)));
+
+        context.setVariable("property", propertyDao.find(Integer.parseInt(productId)));
+
         engine.process("product/property-single.html", context, response.getWriter());
 //        out.println("Ana");
     }

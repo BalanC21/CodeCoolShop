@@ -9,13 +9,13 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="intro-body">
-                                    <p class="intro-title-top" th:text="${prod.name}">Product name</p>
-                                    <h1 class="intro-title mb-4 ">
+                                    <p class="intro-title-top">Property name</p>
+                                    <h1 class="intro-title mb-4 " th:text="${prod.name}">
                                         <span class="color-b">204 </span> Mount
                                         <br> Olive Road Two
                                     </h1>
                                     <p class="intro-subtitle intro-price">
-                                        <a href="#"><span class="price-a"
+                                        <a th:href="@{/productDetail(article=${prod.getId()})}"><span class="price-a"
                                                           th:text="${prod.getProductCategory().getName()} + ' | ' + ${prod.getPrice()}">100 USD</span></a>
                                     </p>
                                 </div>
