@@ -26,6 +26,7 @@
                                 <div class="card-box-ico">
                                     <span class="bi bi-cash">$</span>
                                 </div>
+                                <br>
                                 <div class="card-title-c align-self-center">
                                     <h5 class="title-c" th:text="${singleProperty.getPrice()}">15000</h5>
                                 </div>
@@ -84,6 +85,15 @@
                             <div class="col-sm-12">
                                 <div class="title-box-d">
                                     <h3 class="title-d">Property Description</h3>
+                                    <div>
+                                        <h4>
+                                            <a id="addSingleProperty" th:name="${singleProperty.getId()}"
+                                               class="bi bi-bag-heart-fill" type="button"
+                                               aria-controls="navbarDefault" aria-expanded="false"
+                                               aria-label="Toggle navigation">Add to Cart
+                                            </a>
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>

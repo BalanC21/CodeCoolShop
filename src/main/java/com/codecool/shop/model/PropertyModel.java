@@ -65,4 +65,20 @@ public class PropertyModel extends BaseModel {
     public Currency getDefaultCurrency() {
         return defaultCurrency;
     }
+
+    @Override
+    public String toString() {
+        return "PropertyModel{" +
+                "agentModel=" + agentModel +
+                ", numberOfBeds='" + numberOfBeds + '\'' +
+                ", numberOfBaths='" + numberOfBaths + '\'' +
+                ", numberOfGarages='" + numberOfGarages + '\'' +
+                ", price=" + price +
+                ", area=" + area +
+                ", productCategory=" + productCategory +
+                ", defaultCurrency=" + defaultCurrency +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

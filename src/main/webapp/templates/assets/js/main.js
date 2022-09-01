@@ -10,7 +10,6 @@
   /**
    * Easy selector helper function
    */
-
   const select = (el, all = false) => {
     el = el.trim()
     if (all) {
@@ -124,7 +123,7 @@
     speed: 600,
     loop: true,
     autoplay: {
-      delay: 4500,
+      delay: 5000,
       disableOnInteraction: false
     },
     slidesPerView: 'auto',
@@ -153,7 +152,7 @@
     speed: 600,
     loop: true,
     autoplay: {
-      delay: 4500,
+      delay: 5000,
       disableOnInteraction: false
     },
     slidesPerView: 'auto',
@@ -209,4 +208,5 @@
       clickable: true
     }
   });
+
 })()

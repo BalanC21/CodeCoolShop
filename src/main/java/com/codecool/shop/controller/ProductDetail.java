@@ -15,13 +15,12 @@ import java.io.PrintWriter;
 
 @WebServlet(urlPatterns = {"/productDetail"})
 public class ProductDetail extends HttpServlet {
-
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PropertyDao propertyDao = PropertyDaoMem.getInstance();
         String productId = request.getParameter("article");
-
         PrintWriter out = response.getWriter();
+
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
 
         WebContext context = new WebContext(request, response, request.getServletContext());
@@ -31,6 +30,5 @@ public class ProductDetail extends HttpServlet {
         context.setVariable("property", propertyDao.find(Integer.parseInt(productId)));
 
         engine.process("product/property-single.html", context, response.getWriter());
-//        out.println("Ana");
     }
 }

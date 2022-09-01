@@ -52,4 +52,9 @@ public class PropertyDaoMem implements PropertyDao {
     public List<PropertyModel> getBy(ProductCategory productCategory) {
         return data.stream().filter(t -> t.getProductCategory().equals(productCategory)).collect(Collectors.toList());
     }
+
+    @Override
+    public PropertyModel getById(int id) {
+        return data.stream().filter(elem ->elem.getId() == id).collect(Collectors.toList()).get(0);
+    }
 }

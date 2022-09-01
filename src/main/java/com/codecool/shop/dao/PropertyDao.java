@@ -18,4 +18,5 @@ public interface PropertyDao {
     List<PropertyModel> getBy(AgentModel agentModel);
 
     List<PropertyModel> getBy(ProductCategory productCategory);
+    PropertyModel getById(int id);
 }

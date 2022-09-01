@@ -5,6 +5,65 @@
 
 <div th:replace="/navBar.html :: navBar"></div>
 
+<main id="main" th:fragment="property-grid">
+    <section class="property-grid grid" th:fragment="property-grid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" th:each="property, iterStat : ${cartProducts}">
+                    <div class="card-box-a card-shadow">
+                        <div class="img-box-a">
+                            <img class="" th:attr="src='/templates/assets/img/property-' + ${property.id} + '.jpg'"
+                                 alt="" src="https://placehold.it/400x250/000/fff"/>
+                        </div>
+                        <div class="card-overlay">
+                            <div class="card-overlay-a-content">
+                                <div class="card-header-a">
+                                    <h2 class="card-title-a">
+                                        <a th:href="@{/productDetail(article=${property.getId()})}"
+                                           th:text="${property.getName()}">204 Mount
+                                            <br/> Olive Road Two</a>
+                                    </h2>
+                                </div>
+                                <div class="card-body-a">
+                                    <div class="price-box d-flex">
+                                        <span class="price-a"
+                                              th:text="${property.getProductCategory().getName()} + ' | ' +${property.getPrice()}">rent | $ 12.000</span>
+                                    </div>
+                                    <a th:href="@{/productDetail(article=${property.getId()})}" class="link-a">Click
+                                        here to view
+                                        <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                </div>
+                                <div class="card-footer-a">
+                                    <ul class="card-info d-flex justify-content-around">
+                                        <li>
+                                            <h4 class="card-info-title">Area</h4>
+                                            <span th:text="${property.getArea()}">340m
+                          <sup>2</sup>
+                        </span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Beds</h4>
+                                            <span th:text="${property.getNumberOfBeds()}">2</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Baths</h4>
+                                            <span th:text="${property.getNumberOfBaths()}">4</span>
+                                        </li>
+                                        <li>
+                                            <h4 class="card-info-title">Garages</h4>
+                                            <span th:text="${property.getNumberOfGarages()}">1</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 <div th:replace="footer.html :: copy"></div>
 
 </body>

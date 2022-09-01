@@ -29,7 +29,7 @@
                             <div class="card-overlay-a-content">
                                 <div class="card-header-a">
                                     <h2 class="card-title-a">
-                                        <a href="#" th:text="${property.getName()}">206 Mount
+                                        <a th:href="@{/productDetail(article=${property.getId()})}" th:text="${property.getName()}">206 Mount
                                             <br/> Olive Road Two</a>
                                     </h2>
                                 </div>
