@@ -49,6 +49,6 @@ public class Initializer implements ServletContextListener {
         propertyDataStore.add(new PropertyModel(cristi, "Mount Oliver RoadTwo", "Very Good Lighting", "6", "3", "2", new BigDecimal(20_000), new BigDecimal(110), rent, "USD"));
         propertyDataStore.add(new PropertyModel(moni, "Ana RoadTwo", "Very Good Area", "10", "4", "6", new BigDecimal(35_000), new BigDecimal(210), sale, "USD"));
         propertyDataStore.add(new PropertyModel(cristi, "Banana RoadTwo", "Very Good Road", "2", "5", "1", new BigDecimal(15_000), new BigDecimal(310), rent, "USD"));
-        propertyDataStore.add(new PropertyModel(moni, "Oliver Car", "Very Good Car", "7", "2", "0", new BigDecimal(24_000), new BigDecimal(40), sale, "USD"));
+        propertyDataStore.add(new PropertyModel(moni, "Oliver Car", "Very Good Car", "7", "2", "0", new BigDecimal(24_000), new BigDecimal(456), sale, "USD"));
     }
 }
