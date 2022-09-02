@@ -1,9 +1,7 @@
 package com.codecool.shop.controller.apis;
 
 import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.dao.PropertyDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
-import com.codecool.shop.dao.implementation.PropertyDaoMem;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,23 +11,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "AddCartServlet", urlPatterns = {"/api/getCart"}, loadOnStartup = 1)
-public class ApiCart extends HttpServlet {
-
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
-        out.println("Extraordinar");
-    }
-
+@WebServlet(urlPatterns = {"/api/decrease"})
+public class DecreaseApi extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PropertyDao propertyDao = PropertyDaoMem.getInstance();
-
+        StringBuffer buffer = new StringBuffer();
         CartDao cartDao = CartDaoMem.getInstance();
 
-        StringBuffer buffer = new StringBuffer();
         String line;
+
+        System.out.println("Spatie");
+
         try {
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null) {
@@ -39,9 +31,11 @@ public class ApiCart extends HttpServlet {
             System.out.println(e.getMessage());
         }
 
-        int propertyIdAsInt = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
+        System.out.println("Spatie2");
+        int decreaseValue = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
+        System.out.println(decreaseValue);
 
-        cartDao.add(propertyDao.getById(propertyIdAsInt));
+        System.out.println("Spatie3");
 
         response.setContentType("application/json");
         String dataToRespond = "{\"id\":15,\"result\":\"SUCCESS\"}";
@@ -49,4 +43,3 @@ public class ApiCart extends HttpServlet {
         out.println(dataToRespond);
     }
 }
-

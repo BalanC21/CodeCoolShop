@@ -10,9 +10,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4" th:each="property, iterStat : ${cartProducts}">
-                    <div class="card-box-a card-shadow">
+                    <div class="card-box-a card-shadow divProst" id="propertyCard" th:data-id="${property.getId()}">
                         <div class="img-box-a">
-                            <img class="" th:attr="src='/templates/assets/img/property-' + ${property.id} + '.jpg'"
+                            <img class="" th:attr="src='/templates/assets/img/property-' + ${property.getId()} + '.jpg'"
                                  alt="" src="https://placehold.it/400x250/000/fff"/>
                         </div>
                         <div class="card-overlay">
@@ -32,6 +32,11 @@
                                     <a th:href="@{/productDetail(article=${property.getId()})}" class="link-a">Click
                                         here to view
                                         <span class="bi bi-chevron-right"></span>
+                                    </a>
+                                    <a id="deleteBtn" th:name="${property.getId()}"
+                                       class="bi bi-trash-fill buttonHandicapat" type="button"
+                                       aria-controls="navbarDefault" aria-expanded="false"
+                                       aria-label="Toggle navigation">Delete
                                     </a>
                                 </div>
                                 <div class="card-footer-a">
@@ -59,6 +64,23 @@
                             </div>
                         </div>
                     </div>
+                    <form id="formId" th:name="${property.getId()}">
+                        <div class="value-button addItem decreaseItem" id="decrease" onclick="decreaseValue()"
+                             th:data-id="${property.getId()}"
+                             value="Decrease Value">-
+                        </div>
+                        <label for="number"></label><input class="anaContext" type="number" id="number"
+                                                           th:data-id="${property.getId()}"
+                                                           value="0"/>
+                        <div class="value-button addItem" id="increase" onclick="increaseValue()"
+                             th:data-id="${property.getId()}"
+                             value="Increase Value">+
+                        </div>
+                    </form>
+                    <span><h1></h1></span>
+                    <span><h1></h1></span>
+                    <span><h1></h1></span>
+                    <span><h1></h1></span>
                 </div>
             </div>
         </div>

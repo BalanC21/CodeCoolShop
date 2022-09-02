@@ -28,7 +28,7 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void remove(int id) {
-
+        propertyModels.removeIf(propertyModel -> propertyModel.getId() == id);
     }
 
     @Override

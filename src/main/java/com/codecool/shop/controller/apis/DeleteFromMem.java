@@ -13,19 +13,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "AddCartServlet", urlPatterns = {"/api/getCart"}, loadOnStartup = 1)
-public class ApiCart extends HttpServlet {
-
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter out = response.getWriter();
-        out.println("Extraordinar");
-    }
-
+@WebServlet(urlPatterns = {"/api/deleteProduct"})
+public class DeleteFromMem extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PropertyDao propertyDao = PropertyDaoMem.getInstance();
-
         CartDao cartDao = CartDaoMem.getInstance();
 
         StringBuffer buffer = new StringBuffer();
@@ -40,8 +31,7 @@ public class ApiCart extends HttpServlet {
         }
 
         int propertyIdAsInt = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
-
-        cartDao.add(propertyDao.getById(propertyIdAsInt));
+        cartDao.remove(propertyIdAsInt);
 
         response.setContentType("application/json");
         String dataToRespond = "{\"id\":15,\"result\":\"SUCCESS\"}";
@@ -49,4 +39,3 @@ public class ApiCart extends HttpServlet {
         out.println(dataToRespond);
     }
 }
-
