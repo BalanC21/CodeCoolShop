@@ -10,16 +10,14 @@ public class PropertySerializer implements JsonSerializer<PropertyModel> {
 
     @Override
     public JsonElement serialize(PropertyModel propertyModel, Type type, JsonSerializationContext jsonSerializationContext) {
+
+        JsonObject productCategoryJsonObject = new JsonObject();
+        productCategoryJsonObject.addProperty("id", propertyModel.getProductCategory().getId());
+        productCategoryJsonObject.addProperty("name", propertyModel.getProductCategory().getName());
+        productCategoryJsonObject.addProperty("department", propertyModel.getProductCategory().getDepartment());
+        productCategoryJsonObject.addProperty("description", propertyModel.getProductCategory().getDescription());
+
         JsonObject jsonObject = new JsonObject();
-        JsonObject pcJsonObject = new JsonObject();
-        pcJsonObject.addProperty("id", propertyModel.getProductCategory().getId());
-        pcJsonObject.addProperty("name", propertyModel.getProductCategory().getName());
-        pcJsonObject.addProperty("department", propertyModel.getProductCategory().getDepartment());
-        pcJsonObject.addProperty("description", propertyModel.getProductCategory().getDescription());
-
-
-
-
         jsonObject.addProperty("id", propertyModel.getId());
         jsonObject.addProperty("name", propertyModel.getName());
         jsonObject.addProperty("description", propertyModel.getDescription());
@@ -29,8 +27,10 @@ public class PropertySerializer implements JsonSerializer<PropertyModel> {
         jsonObject.addProperty("numberOfGarages", propertyModel.getNumberOfGarages());
         jsonObject.addProperty("numberOfBaths", propertyModel.getNumberOfBaths());
         jsonObject.addProperty("ares", propertyModel.getArea());
-        jsonObject.add("propertyModelCategory", pcJsonObject);
-//        jsonObject.add("propertyModelCategory", new Gson().toJsonTree(propertyModel.getProductCategory()));
+        jsonObject.add("propertyModelCategory", productCategoryJsonObject);
         return jsonObject;
+
+        // TODO: 05.09.2022 Other Way to do Serialization
+//        jsonObject.add("propertyModelCategory", new Gson().toJsonTree(propertyModel.getProductCategory()));
     }
 }

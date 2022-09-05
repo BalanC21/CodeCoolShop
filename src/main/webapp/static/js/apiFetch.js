@@ -108,7 +108,7 @@ const ana = async (rent) => {
     const dataToBePosted = {
         filterBy: filterAna
     }
-    let response = await fetch("/api/rent", {
+    let response = await fetch("/api/sort", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

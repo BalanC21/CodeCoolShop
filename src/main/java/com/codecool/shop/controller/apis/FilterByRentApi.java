@@ -19,19 +19,17 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@WebServlet(name = "FilterServlet", urlPatterns = {"/api/rent"}, loadOnStartup = 1)
+@WebServlet(name = "FilterServlet", urlPatterns = {"/api/sort"}, loadOnStartup = 1)
 public class FilterByRentApi extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FilterMem filterMem = FilterMem.getInstance();
         StringBuffer buffer = getResponse(request);
-
         response.setContentType("application/json");
 
         Gson gson = new GsonBuilder().registerTypeAdapter(PropertyModel.class, new PropertySerializer()).create();
         DtoDefault anaTest = new Gson().fromJson(String.valueOf(buffer), DtoDefault.class);
-
 
         List<PropertyModel> filteredList = filterMem.filterByCriteria(anaTest.getFilterBy());
 
