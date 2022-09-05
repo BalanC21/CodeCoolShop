@@ -44,7 +44,8 @@ const deleteItem = () => {
 }
 
 function generateProduct(product) {
-    return `<div class="col-md-4">
+    return `
+        <div class="col-md-4">
         <div class="card-box-a card-shadow">
             <div class="img-box-a">
                 <img class="" src='/templates/assets/img/property-${product.id}.jpg' src="https://placehold.it/400x250/000/fff" alt=""/>
@@ -58,7 +59,7 @@ function generateProduct(product) {
                     </div>
                     <div class="card-body-a">
                         <div class="price-box d-flex">
-                                        <span class="price-a">rent | ${product.defaultPrice}</span>
+                                        <span class="price-a">${product.propertyModelCategory.name} | ${product.defaultPrice}</span>
 
                         </div>
                         <a href="@{/productDetail(article=${product.id})}" class="link-a">Click
@@ -96,30 +97,33 @@ function generateProduct(product) {
 
 async function getHtmlCode(result) {
     let contentDiv = document.querySelector(`.decenumergi`)
-    contentDiv.innerHTML = "";
+    contentDiv.innerHTML = ``
     for (const item of result) {
         contentDiv.innerHTML += generateProduct(item)
     }
 }
 
-async function filterElements() {
-    const rent = document.querySelector('.alignRight')
-    await rent.addEventListener('click', async () => {
-        let filterAna = rent.value
-        const dataToBePosted = {
-            filterBy: filterAna
-        }
-        let response = await fetch("/api/rent", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(dataToBePosted)
-        })
-        const result = await response.json();
-        await getHtmlCode(result)
+const ana = async (rent) => {
+    let filterAna = rent.value
+    const dataToBePosted = {
+        filterBy: filterAna
+    }
+    let response = await fetch("/api/rent", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(dataToBePosted)
     })
+    const result = await response.json();
+    await getHtmlCode(result)
+
+}
+
+async function filterElements() {
+    const rent = document.getElementById("filter-option")
+    await rent.addEventListener('change', () => ana(rent))
 }
 
 const init = () => {

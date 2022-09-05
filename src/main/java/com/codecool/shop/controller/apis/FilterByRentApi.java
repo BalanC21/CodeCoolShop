@@ -1,6 +1,8 @@
 package com.codecool.shop.controller.apis;
 
+import com.codecool.shop.dao.implementation.DtoDefault;
 import com.codecool.shop.dao.implementation.FilterMem;
+import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.PropertyModel;
 import com.codecool.shop.serialization.PropertySerializer;
 import com.google.gson.Gson;
@@ -23,19 +25,15 @@ public class FilterByRentApi extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         FilterMem filterMem = FilterMem.getInstance();
-
         StringBuffer buffer = getResponse(request);
-        String[] criteriaList = buffer.toString().split("\"");
-        System.out.println(Arrays.toString(criteriaList) + " CriteriaList");
-        String criteria = criteriaList[1];
-
-        System.out.println(criteria + " Criteria");
-
-        List<PropertyModel> filteredList = filterMem.filterByCriteria(criteria);
 
         response.setContentType("application/json");
 
         Gson gson = new GsonBuilder().registerTypeAdapter(PropertyModel.class, new PropertySerializer()).create();
+        DtoDefault anaTest = new Gson().fromJson(String.valueOf(buffer), DtoDefault.class);
+
+
+        List<PropertyModel> filteredList = filterMem.filterByCriteria(anaTest.getFilterBy());
 
         PrintWriter out = response.getWriter();
         out.println(gson.toJson(filteredList));

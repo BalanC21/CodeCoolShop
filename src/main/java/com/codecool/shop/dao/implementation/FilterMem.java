@@ -2,10 +2,7 @@ package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.model.PropertyModel;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FilterMem {
@@ -26,28 +23,24 @@ public class FilterMem {
         return instance;
     }
 
-    public List<PropertyModel> getFilteredList() {
-        return filteredList;
-    }
-
-    public void setFilteredList(List<PropertyModel> filteredList) {
-        this.filteredList = filteredList;
-    }
-
     public List<PropertyModel> filterByCriteria(String criteria) {
+        switch (criteria){
+            case "1": return filterByNewToOld();
+            case "2": return filterByRent();
+            case "3": return filterBySale();
+            default: return getAll;
+        }
+    }
+
+    private List<PropertyModel> filterByRent(){
         return getAll.stream().filter(model -> model.getProductCategory().getName().trim().equals("rent")).collect(Collectors.toList());
     }
-
-    public List<PropertyModel> filterByStatus(String criteria) {
-        filteredList = new ArrayList<>();
-        for (PropertyModel product : getAll) {
-            if (Objects.equals(product.getProductCategory().getName(), criteria)) {
-                filteredList.add(product);
-            }
-        }
-        return filteredList;
+    private List<PropertyModel> filterBySale(){
+        return getAll.stream().filter(model -> model.getProductCategory().getName().trim().equals("sale")).collect(Collectors.toList());
     }
-
+    private List<PropertyModel> filterByNewToOld(){
+        return getAll.stream().sorted(Comparator.comparingInt(PropertyModel::getId).reversed()).collect(Collectors.toList());
+    }
     public List<PropertyModel> orderByPrice(String criteria) {
         filteredList = new ArrayList<>();
 
@@ -62,5 +55,13 @@ public class FilterMem {
         }
 
         return filteredList;
+    }
+
+    public List<PropertyModel> getFilteredList() {
+        return filteredList;
+    }
+
+    public void setFilteredList(List<PropertyModel> filteredList) {
+        this.filteredList = filteredList;
     }
 }
