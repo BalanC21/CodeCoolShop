@@ -1,12 +1,12 @@
 <main id="main" th:fragment="property-grid">
     <section class="property-grid grid" th:fragment="property-grid">
         <div class="container">
-            <div class="row">
+            <div class="row decenumergi">
                 <div class="col-sm-12">
                     <div class="grid-option">
                         <form>
                             <label>
-                                <select class="custom-select">
+                                <select class="custom-select alignRight">
                                     <option selected>All</option>
                                     <option value="1">New to Old</option>
                                     <option value="2">For Rent</option>
@@ -14,6 +14,15 @@
                                 </select>
                             </label>
                         </form>
+                        <!--                        <form>-->
+                        <!--                            <label>-->
+                        <!--                                <a class="bi bi-bag-heart-fill pulaSugilala" type="button"-->
+                        <!--                                   aria-controls="navbarDefault" aria-expanded="false"-->
+                        <!--                                   aria-label="Toggle navigation">Add to Cart-->
+                        <!--                                </a>-->
+                        <!--                                &lt;!&ndash;                                    <option value="2"  type="button" class="pulaSugilala">For Rent</option>&ndash;&gt;-->
+                        <!--                            </label>-->
+                        <!--                        </form>-->
                     </div>
                 </div>
                 <div class="col-md-4" th:each="property, iterStat : ${properties}">

@@ -40,8 +40,8 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(cristi);
 
         //setting up a new product category
-        ProductCategory rent = new ProductCategory("Rent", "Properties", "A house computer, commonly shortened to house, is a thin, flat mobile computer with a touchscreen display.");
-        ProductCategory sale = new ProductCategory("Sale", "Properties", "A house computer, commonly shortened to house, is a thin, flat mobile computer with a touchscreen display.");
+        ProductCategory rent = new ProductCategory("rent", "Properties", "A house computer, commonly shortened to house, is a thin, flat mobile computer with a touchscreen display.");
+        ProductCategory sale = new ProductCategory("sale", "Properties", "A house computer, commonly shortened to house, is a thin, flat mobile computer with a touchscreen display.");
         productCategoryDataStore.add(rent);
         productCategoryDataStore.add(sale);
 

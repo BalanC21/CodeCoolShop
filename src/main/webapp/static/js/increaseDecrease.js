@@ -5,9 +5,7 @@ function increaseValue() {
     for (const anaContextElement of anaContext) {
         let addItem = document.querySelectorAll('.addItem');
         for (const addItemElement of addItem) {
-            console.log(addItemElement.id)
             if (anaContextElement.getAttribute("data-id") === addItemElement.getAttribute("data-id")) {
-                console.log("Aaaaaa")
                 value = isNaN(value) ? 0 : value;
                 value++;
                 anaContextElement.value = value;
@@ -29,10 +27,7 @@ function decreaseValue() {
 
 const productNumber = (number, type) => {
     const numberOfProducts = document.querySelectorAll('form > input');
-    console.log(numberOfProducts)
     numberOfProducts.forEach(elem => elem.addEventListener('click', async () => {
-        console.log("Add cart btn " + " " + elem.name)
-        console.log(elem.getAttribute("data-id"))
         increaseValue(elem.getAttribute("data-id"))
         const response = await fetch('/api/' + type, {
             method: 'POST',
@@ -42,7 +37,6 @@ const productNumber = (number, type) => {
             },
             body: JSON.stringify(number.toString())
         });
-        await console.log(elem.name + " Data")
         const data = await response.json();
         await console.log(data);
     }))

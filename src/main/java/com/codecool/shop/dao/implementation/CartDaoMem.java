@@ -23,7 +23,8 @@ public class CartDaoMem implements CartDao {
 
     @Override
     public void add(PropertyModel product) {
-        propertyModels.add(product);
+        if (propertyModels.stream().noneMatch(propertyModel -> propertyModel.getId() == product.getId()))
+            propertyModels.add(product);
     }
 
     @Override
