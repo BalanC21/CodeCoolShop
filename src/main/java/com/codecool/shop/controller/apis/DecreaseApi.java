@@ -26,8 +26,7 @@ public class DecreaseApi extends HttpServlet {
 
         DtoCart dtoCart = new Gson().fromJson(String.valueOf(buffer), DtoCart.class);
         cartData.addDtoCart(dtoCart);
-
-        System.out.println(dtoCart + " DtoCart");
+        System.out.println(cartData.getTotal() + " Total");
     }
 
     static StringBuffer ana(HttpServletRequest request) {

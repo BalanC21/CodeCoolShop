@@ -1,5 +1,6 @@
 package com.codecool.shop.dao.implementation;
 
+import com.codecool.shop.dao.PropertyDao;
 import com.codecool.shop.model.PropertyModel;
 
 import java.util.ArrayList;
@@ -10,13 +11,8 @@ public class CartData {
     private List<PropertyModel> allProperties;
     private List<DtoCart> dtoCarts;
 
-    public CartData(List<PropertyModel> allProperties, List<DtoCart> dtoCart) {
-        this.allProperties = allProperties;
-        this.dtoCarts = dtoCart;
-    }
-
     public CartData() {
-        allProperties = new ArrayList<>();
+        allProperties = PropertyDaoMem.getInstance().getAll();
         dtoCarts = new ArrayList<>();
     }
 
@@ -38,6 +34,17 @@ public class CartData {
         }
         if (dtoCarts.stream().noneMatch(dtoCart1 -> dtoCart1.getPropertyId().equals(dtoCart.getPropertyId())))
             dtoCarts.add(dtoCart);
+    }
+
+    public int getTotal() {
+        int total = 0;
+        for (PropertyModel property : allProperties) {
+            for (DtoCart dtoCart : dtoCarts) {
+                if (property.getId() == Integer.parseInt(dtoCart.getPropertyId()))
+                    total += (Integer.parseInt(property.getPrice())) * Integer.parseInt(dtoCart.getNumberOfProperties());
+            }
+        }
+        return total;
     }
 
 
