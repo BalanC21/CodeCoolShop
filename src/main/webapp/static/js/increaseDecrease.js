@@ -1,61 +1,39 @@
 const cartNumberValue = document.querySelectorAll('#number');
-cartNumberValue.forEach(elem => console.log(elem.value + " " + elem.getAttribute("data-id")))
 
-function increaseValue(elemId) {
-    // console.log("De ce nu mergi Test 1045")
-    // console.log(cartNumberValue)
-    // cartNumberValue.forEach(elem => () => {
-    //     console.log(" Elem Value" + " increaseValue")
-    //     if (elem.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()) {
-    //         elem.innerText = elem.value++;
-    //         console.log("elem.value" + elem.value)
-    //     }
-    // })
-    for (const increaseBtn of cartNumberValue) {
-        let value = increaseBtn.value;
-        if (increaseBtn.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()) {
-            value++
-            increaseBtn.value = value
-        }
-    }
-    productNumber(value, "increase")
-}
-
-function decreaseValue(elemId) {
-    // console.log("De ce nu mergi doi Test 1045")
-    // cartNumberValue.forEach(elem => () => {
-    // cartNumberValue.forEach(elem => () => {
-    //     console.log(" Elem Value" + " decreaseValue")
-    //     if (elem.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()){
-    //         elem.innerText = elem.value--
-    //         console.log("elem.value" + elem.value)
-    //     }
-    // })
+async function modifyValue(elemId, modifier = 1) {
+    let value;
     for (const elem of cartNumberValue) {
-        let value = elem.value;
         if (elem.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()) {
-            value--
-            elem.value = value
+            value = elem.value;
+            elem.value = parseInt(value) + parseInt(modifier);
+            value = elem.value;
+            await getCartDataAPI(modifier, parseInt(value), elemId.toString().toLowerCase())
         }
     }
-    productNumber(value, "decrease")
 }
 
-const productNumber = (number, type) => {
-    let numberOfProducts = document.querySelectorAll('.increaseDecrease');
-    numberOfProducts.forEach(elem => elem.addEventListener('click', async () => {
-        let response = await fetch(`/api/` + type.toLowerCase(), {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            numberOfProperties: JSON.stringify(number.toString()),
-            propertyId: JSON.stringify(elem.getAttribute("data-id").toString())
-        });
-        const data = await response.json();
-    }))
+async function getCartDataAPI(modifier, value, elemId) {
+    if (modifier === 1) {
+      await  productNumber(value, "increase", elemId)
+    } else {
+        await productNumber(value, "decrease", elemId)
+    }
 }
 
-// https://www.google.com/maps/dir/Strada+Dealul+%C8%9Augulea,+Bucure%C8%99ti/Pasul+Bratocea/@44.5010319,26.0436256,13.54z/am=t/data=!4m13!4m12!1m5!1m1!1s0x40b201bafc7a1d43:0x130095f8de735835!2m2!1d26.0311774!2d44.4391387!1m5!1m1!1s0x40b3710bd0fd2ccb:0x40be0586ec823e5a!2m2!1d25.8968139!2d45.48037
-console.log("The end")
+const productNumber = async (number, type, elemId) => {
+    const dataToBePosted = {
+        id: elemId,
+        numberOfProperties: number
+    };
+
+    let response = await fetch(`/api/` + type.toLowerCase(), {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(dataToBePosted)
+    });
+    const data = await response.json();
+    console.log(data)
+}

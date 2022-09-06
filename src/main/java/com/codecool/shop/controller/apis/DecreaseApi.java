@@ -13,11 +13,11 @@ public class DecreaseApi extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuffer buffer = ana(request);
-        int decreaseValue = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
+//        int decreaseValue = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
 
-        System.out.println(buffer + " decrease");
+        System.out.println(buffer + " buffer decrease");
 
-        System.out.println(decreaseValue);
+//        System.out.println(decreaseValue);
 
         response.setContentType("application/json");
         String dataToRespond = "{\"id\":15,\"result\":\"SUCCESS\"}";
