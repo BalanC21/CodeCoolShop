@@ -2,7 +2,7 @@ package com.codecool.shop.dao.implementation;
 
 public class DtoCart {
     private String numberOfProperties;
-    private String propertyId;
+    private final String propertyId;
 
     public DtoCart(String numberOfProperties, String propertyId) {
         this.numberOfProperties = numberOfProperties;
@@ -17,6 +17,9 @@ public class DtoCart {
         return propertyId;
     }
 
+    public void setNumberOfProperties(String numberOfProperties) {
+        this.numberOfProperties = numberOfProperties;
+    }
 
     @Override
     public String toString() {

@@ -1,5 +1,9 @@
 package com.codecool.shop.controller.apis;
 
+import com.codecool.shop.dao.implementation.CartData;
+import com.codecool.shop.dao.implementation.DtoCart;
+import com.google.gson.Gson;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,16 +17,17 @@ public class DecreaseApi extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuffer buffer = ana(request);
-//        int decreaseValue = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
 
-        System.out.println(buffer + " buffer decrease");
+        SetDtoCart(response, buffer);
+    }
 
-//        System.out.println(decreaseValue);
+    static void SetDtoCart(HttpServletResponse response, StringBuffer buffer) throws IOException {
+        CartData cartData = CartData.getInstance();
 
-        response.setContentType("application/json");
-        String dataToRespond = "{\"id\":15,\"result\":\"SUCCESS\"}";
-        PrintWriter out = response.getWriter();
-        out.println(dataToRespond);
+        DtoCart dtoCart = new Gson().fromJson(String.valueOf(buffer), DtoCart.class);
+        cartData.addDtoCart(dtoCart);
+
+        System.out.println(dtoCart + " DtoCart");
     }
 
     static StringBuffer ana(HttpServletRequest request) {

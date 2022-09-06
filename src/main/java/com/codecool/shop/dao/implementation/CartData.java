@@ -2,41 +2,49 @@ package com.codecool.shop.dao.implementation;
 
 import com.codecool.shop.model.PropertyModel;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CartData {
-    private List<PropertyModel> propertyModels;
-    private int numberOfProperties;
+    private static CartData instance = null;
+    private List<PropertyModel> allProperties;
+    private List<DtoCart> dtoCarts;
 
-    public CartData(List<PropertyModel> propertyModels, int numberOfProperties) {
-        this.propertyModels = propertyModels;
-        this.numberOfProperties = numberOfProperties;
+    public CartData(List<PropertyModel> allProperties, List<DtoCart> dtoCart) {
+        this.allProperties = allProperties;
+        this.dtoCarts = dtoCart;
     }
 
-    public List<PropertyModel> getPropertyModels() {
-        return propertyModels;
+    public CartData() {
+        allProperties = new ArrayList<>();
+        dtoCarts = new ArrayList<>();
     }
 
-    public int getNumberOfProperties() {
-        return numberOfProperties;
+    public static CartData getInstance() {
+        if (instance == null) {
+            instance = new CartData();
+        }
+        return instance;
     }
 
-    public void setNumberOfProperties(int numberOfProperties) {
-        this.numberOfProperties = numberOfProperties;
+    public List<DtoCart> getDtoCarts() {
+        return dtoCarts;
     }
 
-    public Map<PropertyModel, Integer> getCartProducts(){
-
-        return new HashMap<>();
+    public void addDtoCart(DtoCart dtoCart) {
+        for (DtoCart dtoElem : dtoCarts) {
+            if (dtoElem.getPropertyId().equals(dtoCart.getPropertyId()))
+                dtoElem.setNumberOfProperties(dtoCart.getNumberOfProperties());
+        }
+        if (dtoCarts.stream().noneMatch(dtoCart1 -> dtoCart1.getPropertyId().equals(dtoCart.getPropertyId())))
+            dtoCarts.add(dtoCart);
     }
+
 
     @Override
     public String toString() {
         return "CartData{" +
-                "propertyModels=" + propertyModels +
-                ", numberOfProperties=" + numberOfProperties +
+                "allProperties=" + allProperties +
                 '}';
     }
 }

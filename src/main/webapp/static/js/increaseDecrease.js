@@ -14,7 +14,7 @@ async function modifyValue(elemId, modifier = 1) {
 
 async function getCartDataAPI(modifier, value, elemId) {
     if (modifier === 1) {
-      await  productNumber(value, "increase", elemId)
+        await productNumber(value, "increase", elemId)
     } else {
         await productNumber(value, "decrease", elemId)
     }
@@ -22,11 +22,10 @@ async function getCartDataAPI(modifier, value, elemId) {
 
 const productNumber = async (number, type, elemId) => {
     const dataToBePosted = {
-        id: elemId,
-        numberOfProperties: number
+        numberOfProperties: number,
+        propertyId: elemId
     };
-
-    let response = await fetch(`/api/` + type.toLowerCase(), {
+    await fetch(`/api/` + type.toLowerCase(), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -34,6 +33,4 @@ const productNumber = async (number, type, elemId) => {
         },
         body: JSON.stringify(dataToBePosted)
     });
-    const data = await response.json();
-    console.log(data)
 }
