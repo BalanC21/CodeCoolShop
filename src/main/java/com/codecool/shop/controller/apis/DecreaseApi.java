@@ -1,8 +1,5 @@
 package com.codecool.shop.controller.apis;
 
-import com.codecool.shop.dao.CartDao;
-import com.codecool.shop.dao.implementation.CartDaoMem;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +13,9 @@ public class DecreaseApi extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuffer buffer = ana(request);
-
         int decreaseValue = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
+
+        System.out.println(buffer + " decrease");
 
         System.out.println(decreaseValue);
 
@@ -28,8 +26,8 @@ public class DecreaseApi extends HttpServlet {
     }
 
     static StringBuffer ana(HttpServletRequest request) {
-        StringBuffer buffer = new StringBuffer();
         String line;
+        StringBuffer buffer = new StringBuffer();
         try {
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null) {

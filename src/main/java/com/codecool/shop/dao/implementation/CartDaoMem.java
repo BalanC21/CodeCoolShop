@@ -8,6 +8,7 @@ import java.util.List;
 
 public class CartDaoMem implements CartDao {
     private List<PropertyModel> propertyModels;
+
     private static CartDaoMem instance = null;
 
     private CartDaoMem() {

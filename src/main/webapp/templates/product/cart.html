@@ -64,18 +64,16 @@
                             </div>
                         </div>
                     </div>
-                    <form id="formId" th:name="${property.getId()}">
-                        <div class="value-button addItem decreaseItem" id="decrease" onclick="decreaseValue()"
+                    <form>
+                        <div class="value-button increaseDecrease" th:data-id="${property.getId()}" value="Decrease Value"
+                             th:onclick="'decreaseValue('+ ${property.getId()} +')'">-</div>
+                        <label for="number"></label>
+                        <!--                        <input class="numberValue" type="number" id="number" th:data-id="${property.getId()}" value="0"/>-->
+                        <input class="numberValue" type="number" id="number" th:data-id="${property.getId()}"
+                               value="0"/>
+                        <div class="value-button increaseDecrease" th:onclick="'increaseValue('+ ${property.getId()} +')'"
                              th:data-id="${property.getId()}"
-                             value="Decrease Value">-
-                        </div>
-                        <label for="number"></label><input class="anaContext" type="number" id="number"
-                                                           th:data-id="${property.getId()}"
-                                                           value="0"/>
-                        <div class="value-button addItem" id="increase" onclick="increaseValue()"
-                             th:data-id="${property.getId()}"
-                             value="Increase Value">+
-                        </div>
+                             value="Increase Value">+</div>
                     </form>
                     <span><h1></h1></span>
                     <span><h1></h1></span>

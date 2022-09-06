@@ -14,8 +14,11 @@ public class IncreaseApi extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuffer buffer = FilterByRentApi.getResponse(request);
+
         int propertyIdAsInt = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
         System.out.println(propertyIdAsInt);
+
+        System.out.println(buffer + " increase");
 
         response.setContentType("application/json");
         String dataToRespond = "{\"id\":15,\"result\":\"SUCCESS\"}";

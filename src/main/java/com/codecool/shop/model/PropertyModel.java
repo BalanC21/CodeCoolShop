@@ -13,6 +13,7 @@ public class PropertyModel extends BaseModel {
     private BigDecimal area;
     private ProductCategory productCategory;
     private Currency defaultCurrency;
+    private int quantity;
 
     public PropertyModel(AgentModel agentModel, String name, String description, String numberOfBeds, String numberOfBaths, String numberOfGarages, BigDecimal price, BigDecimal area, ProductCategory category, String currency) {
         super(name, description);
@@ -24,6 +25,7 @@ public class PropertyModel extends BaseModel {
         this.area = area;
         this.productCategory = category;
         this.defaultCurrency = Currency.getInstance(currency);
+        quantity = 1;
     }
 
     public AgentModel getAgentModel() {
@@ -64,6 +66,10 @@ public class PropertyModel extends BaseModel {
 
     public Currency getDefaultCurrency() {
         return defaultCurrency;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
