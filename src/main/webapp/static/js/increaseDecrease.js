@@ -1,8 +1,6 @@
 const cartNumberValue = document.querySelectorAll('#number');
 cartNumberValue.forEach(elem => console.log(elem.value + " " + elem.getAttribute("data-id")))
 
-let value = 0;
-
 function increaseValue(elemId) {
     // console.log("De ce nu mergi Test 1045")
     // console.log(cartNumberValue)
@@ -14,6 +12,7 @@ function increaseValue(elemId) {
     //     }
     // })
     for (const increaseBtn of cartNumberValue) {
+        let value = increaseBtn.value;
         if (increaseBtn.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()) {
             value++
             increaseBtn.value = value
@@ -33,6 +32,7 @@ function decreaseValue(elemId) {
     //     }
     // })
     for (const elem of cartNumberValue) {
+        let value = elem.value;
         if (elem.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()) {
             value--
             elem.value = value
@@ -51,7 +51,7 @@ const productNumber = (number, type) => {
                 'Accept': 'application/json'
             },
             numberOfProperties: JSON.stringify(number.toString()),
-            propertyId: JSON.stringify(number.toString())
+            propertyId: JSON.stringify(elem.getAttribute("data-id").toString())
         });
         const data = await response.json();
     }))

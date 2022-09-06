@@ -15,8 +15,8 @@ public class IncreaseApi extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         StringBuffer buffer = FilterByRentApi.getResponse(request);
 
-        int propertyIdAsInt = Integer.parseInt(String.valueOf(buffer).replace("\"", ""));
-        System.out.println(propertyIdAsInt);
+
+
 
         System.out.println(buffer + " increase");
 
