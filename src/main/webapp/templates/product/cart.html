@@ -64,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    <form>
+                    <form id="formId" th:name="${property.getId()}">
                         <div class="value-button increaseDecrease" th:data-id="${property.getId()}" value="Decrease Value"
                              th:onclick="'modifyValue('+ ${property.getId()} +', -1)'">-</div>
                         <label for="number"></label>

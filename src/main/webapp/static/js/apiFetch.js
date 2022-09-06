@@ -29,24 +29,18 @@ const deleteItem = () => {
     const formId = document.querySelectorAll("#formId");
     const deleteBtn = document.querySelectorAll(".buttonHandicapat");
     const singleProperty = document.querySelectorAll(".divProst");
-    console.log("asda")
     deleteBtn.forEach(elem => elem.addEventListener('click', () => {
-        console.log("nu ajunge")
         for (const argument of singleProperty) {
-            console.log(argument.innerHTML + "    argument")
             if (elem.name === argument.getAttribute("data-id")) {
                 argument.innerHTML = ""
                 deleteFromMem(elem.name).then(r => console.log(r))
+                for (let form of formId) {
+                    if (form.name === elem.name) {
+                        form.innerHTML = "";
+                        deleteFromMem(form.name).then(r => console.log(r))
+                    }
+                }
             }
-            // for (const form of formId) {
-            //     if (elem.name === argument.getAttribute("data-id")) {
-            //         if (form.name === elem.name) {
-            //             argument.innerHTML = "";
-            //             form.innerHTML = "";
-            //             deleteFromMem(form.name).then(r => console.log(r))
-            //         }
-            //     }
-            // }
         }
     }))
 }
