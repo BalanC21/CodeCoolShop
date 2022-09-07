@@ -1,4 +1,5 @@
 const cartNumberValue = document.querySelectorAll('#number');
+const btn = document.querySelectorAll('.increaseDecrease');
 
 async function modifyValue(elemId, modifier = 1) {
     let value;
@@ -8,6 +9,11 @@ async function modifyValue(elemId, modifier = 1) {
             elem.value = parseInt(value) + parseInt(modifier);
             value = elem.value;
             await getCartDataAPI(modifier, parseInt(value), elemId.toString().toLowerCase())
+            for (const elemElement of btn) {
+                if (elemElement.getAttribute("data-id").toString() === elemId.toString()) {
+                    getTotal(elemElement)
+                }
+            }
         }
     }
 }
@@ -33,4 +39,14 @@ const productNumber = async (number, type, elemId) => {
         },
         body: JSON.stringify(dataToBePosted)
     });
+}
+
+
+function getTotal(elem) {
+    elem.addEventListener('click', async () => {
+        let response = await fetch("/api/getTotal");
+        let data = await response.json();
+        let checkOutBtn = document.querySelector(".bi-bag-check-fill")
+        checkOutBtn.innerText = data
+    })
 }

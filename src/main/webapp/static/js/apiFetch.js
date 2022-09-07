@@ -9,12 +9,10 @@ const cartBtn = () => {
             },
             body: JSON.stringify(elem.name)
         });
-        const data = await response.json();
     }))
 }
 
 const deleteFromMem = async (id) => {
-    console.log("deleteFromMem ")
     await fetch(`/api/deleteProduct`, {
         method: 'POST',
         headers: {

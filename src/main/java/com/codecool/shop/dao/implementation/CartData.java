@@ -1,6 +1,5 @@
 package com.codecool.shop.dao.implementation;
 
-import com.codecool.shop.dao.PropertyDao;
 import com.codecool.shop.model.PropertyModel;
 
 import java.util.ArrayList;

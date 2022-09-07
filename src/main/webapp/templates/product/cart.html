@@ -5,7 +5,11 @@
 
 <div th:replace="/navBar.html :: navBar"></div>
 
-<main id="main" th:fragment="property-grid">
+<main id="main" style="margin-top: 150px" th:fragment="property-grid">
+    <div style="margin-bottom: 30px; margin-left: 80px"><h3><a
+            id="checkOutBtn" class="bi bi-bag-check-fill"
+            type="button" aria-controls="navbarDefault" aria-expanded="false"
+            aria-label="Toggle navigation">Checkout</a></h3></div>
     <section class="property-grid grid" th:fragment="property-grid">
         <div class="container">
             <div class="row">

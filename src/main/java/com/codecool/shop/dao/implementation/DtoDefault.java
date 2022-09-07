@@ -1,11 +1,13 @@
 package com.codecool.shop.dao.implementation;
 
 public class DtoDefault {
-    private final String filterBy;
+    private String filterBy;
+    private String total;
 
     public DtoDefault(String filterBy) {
         this.filterBy = filterBy;
     }
+
 
     public String getFilterBy() {
         return filterBy;

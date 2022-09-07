@@ -3,7 +3,9 @@ package com.codecool.shop.controller.apis;
 import com.codecool.shop.dao.CartDao;
 import com.codecool.shop.dao.PropertyDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
+import com.codecool.shop.dao.implementation.CartData;
 import com.codecool.shop.dao.implementation.PropertyDaoMem;
+import com.google.gson.JsonObject;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name = "AddCartServlet", urlPatterns = {"/api/getCart"}, loadOnStartup = 1)
+@WebServlet(name = "AddCartServlet", urlPatterns = {"/api/getCart", "/api/getTotal"}, loadOnStartup = 1)
 public class ApiCart extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        CartData cartData = CartData.getInstance();
+
+        response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        out.println("Extraordinar");
+        out.println(cartData.getTotal());
     }
 
     @Override
