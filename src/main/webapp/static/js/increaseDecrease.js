@@ -6,10 +6,10 @@ async function modifyValue(elemId, modifier = 1) {
     let value;
     for (const elem of cartNumberValue) {
         if (elem.getAttribute("data-id").toString().toLowerCase() === elemId.toString().toLowerCase()) {
-            value = elem.value;
-            elem.value = parseInt(value) + parseInt(modifier);
-            value = elem.value;
-            await getCartDataAPI(modifier, parseInt(value), elemId.toString().toLowerCase())
+            value = parseInt(elem.value);
+            elem.value = value + parseInt(modifier);
+            value = parseInt(elem.value);
+            await getCartDataAPI(modifier, value, elemId.toString().toLowerCase())
             for (const elemElement of btn) {
                 if (elemElement.getAttribute("data-id").toString() === elemId.toString()) {
                     getTotal(elemElement)
