@@ -1,6 +1,7 @@
 const cartNumberValue = document.querySelectorAll('#number');
 const btn = document.querySelectorAll('.increaseDecrease');
 
+// Nu sterge
 async function modifyValue(elemId, modifier = 1) {
     let value;
     for (const elem of cartNumberValue) {
