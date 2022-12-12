@@ -19,7 +19,8 @@ public class ProductDetail extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PropertyDao propertyDao = PropertyDaoMem.getInstance();
         String productId = request.getParameter("article");
-        PrintWriter out = response.getWriter();
+
+        PrintWriter out = response.getWriter(); // todo //
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(request.getServletContext());
 

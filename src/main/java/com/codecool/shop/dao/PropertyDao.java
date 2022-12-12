@@ -15,8 +15,8 @@ public interface PropertyDao {
 
     List<PropertyModel> getAll();
 
-    List<PropertyModel> getBy(AgentModel agentModel);
-
     List<PropertyModel> getBy(ProductCategory productCategory);
+
     PropertyModel getById(int id);
+    List<PropertyModel> getBy(AgentModel agentModel);
 }

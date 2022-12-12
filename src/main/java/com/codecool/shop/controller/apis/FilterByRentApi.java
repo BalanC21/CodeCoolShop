@@ -2,7 +2,6 @@ package com.codecool.shop.controller.apis;
 
 import com.codecool.shop.dao.implementation.DtoDefault;
 import com.codecool.shop.dao.implementation.FilterMem;
-import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.PropertyModel;
 import com.codecool.shop.serialization.PropertySerializer;
 import com.google.gson.Gson;

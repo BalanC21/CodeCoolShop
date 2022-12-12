@@ -2,13 +2,8 @@ package com.codecool.shop.controller.apis;
 
 import com.codecool.shop.dao.implementation.CartData;
 import com.codecool.shop.dao.implementation.DtoCart;
-import com.codecool.shop.dao.implementation.DtoDefault;
-import com.codecool.shop.model.PropertyModel;
-import com.codecool.shop.serialization.PropertySerializer;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

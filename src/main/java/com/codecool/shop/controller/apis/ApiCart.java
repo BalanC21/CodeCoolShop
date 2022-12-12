@@ -5,7 +5,6 @@ import com.codecool.shop.dao.PropertyDao;
 import com.codecool.shop.dao.implementation.CartDaoMem;
 import com.codecool.shop.dao.implementation.CartData;
 import com.codecool.shop.dao.implementation.PropertyDaoMem;
-import com.google.gson.JsonObject;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

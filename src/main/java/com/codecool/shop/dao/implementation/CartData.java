@@ -21,11 +21,6 @@ public class CartData {
         }
         return instance;
     }
-
-    public List<DtoCart> getDtoCarts() {
-        return dtoCarts;
-    }
-
     public void addDtoCart(DtoCart dtoCart) {
         for (DtoCart dtoElem : dtoCarts) {
             if (dtoElem.getPropertyId().equals(dtoCart.getPropertyId()))
@@ -34,7 +29,6 @@ public class CartData {
         if (dtoCarts.stream().noneMatch(dtoCart1 -> dtoCart1.getPropertyId().equals(dtoCart.getPropertyId())))
             dtoCarts.add(dtoCart);
     }
-
     public int getTotal() {
         int total = 0;
         for (PropertyModel property : allProperties) {
@@ -52,5 +46,8 @@ public class CartData {
         return "CartData{" +
                 "allProperties=" + allProperties +
                 '}';
+    }
+    public List<DtoCart> getDtoCarts() {
+        return dtoCarts;
     }
 }

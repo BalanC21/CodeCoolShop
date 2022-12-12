@@ -1,6 +1,5 @@
 package com.codecool.shop.serialization;
 
-import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.PropertyModel;
 import com.google.gson.*;
 

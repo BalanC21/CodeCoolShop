@@ -55,6 +55,6 @@ public class PropertyDaoMem implements PropertyDao {
 
     @Override
     public PropertyModel getById(int id) {
-        return data.stream().filter(elem ->elem.getId() == id).collect(Collectors.toList()).get(0);
+        return data.stream().filter(elem -> elem.getId() == id).collect(Collectors.toList()).get(0);
     }
 }

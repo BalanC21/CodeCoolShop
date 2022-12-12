@@ -1,6 +1,5 @@
 package com.codecool.shop.model;
 
-
 import java.math.BigDecimal;
 import java.util.Currency;
 

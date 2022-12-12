@@ -1,6 +1,5 @@
 package com.codecool.shop.controller.apis;
 
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
